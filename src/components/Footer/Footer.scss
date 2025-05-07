@@ -1,0 +1,43 @@
+@import 'styles/_colors.scss';
+@import 'styles/_mixins.scss';
+
+.footer-wrapper {
+  @include container;
+  border-top: 1px solid $primary-color-dark;
+
+  .navigation ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    padding: 2rem 0;
+    margin: 0;
+
+    li {
+      margin: 0.5rem 0;
+    }
+    a {
+      text-decoration: none;
+      color: $primary-color-dark;
+      font-size: 18px;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: 768px) {
+  .footer-wrapper {
+    .navigation ul {
+      flex-direction: row;
+
+      li {
+        margin: 0;
+      }
+    }
+  }
+}

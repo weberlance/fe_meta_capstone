@@ -1,13 +1,18 @@
-import React from 'react';
-import './Header.css'; // Optional: Add styles for the Header component
+import React, { useState } from 'react';
+import { ReactComponent as Logo } from 'assets/images/Logo.svg';
+import { ReactComponent as Basket } from 'assets/images/Basket.svg';
+import './Header.scss'; // Optional: Add styles for the Header component
 
 const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <header className="header">
+      <div className={`toggle-button ${isMenuOpen ? 'open' : ''}`} role="button" onClick={() => setIsMenuOpen(!isMenuOpen)}></div>
       <div className="logo">
-        <img src="/path/to/logo.png" alt="Logo" />
+        <Logo />
       </div>
-      <nav className="navigation">
+      <nav className={`header-navigation ${isMenuOpen ? 'open' : ''}`}>
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
@@ -15,6 +20,7 @@ const Header = () => {
           <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
+      <Basket className="basket-icon" height="2rem"/>
     </header>
   );
 };

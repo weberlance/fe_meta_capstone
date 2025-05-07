@@ -1,0 +1,103 @@
+@import 'styles/_colors.scss';
+@import 'styles/_mixins.scss';
+
+$toggleMenuThickness: 2px;
+
+.header {
+  @include container;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.header-navigation {
+  ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style: none;
+    display: block;
+  }
+
+  a {
+    text-decoration: none;
+    color: $primary-color-dark;
+    padding: 0.5rem 1rem;
+    display: block;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  a:hover {
+    color: darken($color: $primary-color-dark, $amount: 20%);
+    background-color: lighten($color: $primary-color-light, $amount: 30%);
+  }
+}
+
+.toggle-button {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  border-top: $toggleMenuThickness solid $primary-color-dark;
+  border-bottom: $toggleMenuThickness solid $primary-color-dark;
+
+  &:after,
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: $toggleMenuThickness;
+    background-color: $primary-color-dark;
+    position: absolute;
+    top: calc(50% - #{$toggleMenuThickness / 2});
+    left: 0;
+    transition: transform 0.3s ease;
+  }
+
+  &.open {
+    border-color: transparent;
+
+    &:after {
+      transform: rotate(45deg);
+    }
+    &:before {
+      transform: rotate(-45deg);
+    }
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .header-navigation {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+
+    &.open {
+      display: block;
+      z-index: 10;
+      background-color: #fff;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .header {
+    align-items: center;
+  }
+
+  .header-navigation {
+    li {
+      display: inline-block;
+      margin-right: 1rem;
+    }
+  }
+
+  .toggle-button {
+    display: none;
+  }
+}

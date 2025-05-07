@@ -1,17 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import './Footer.css'; // Optional: Add styles if needed
+import './Footer.scss';
 
-const Footer = ({ text }) => {
+const Footer = () => {
   return (
     <footer className="footer-wrapper">
-      <p>{text}</p>
+      <nav className="navigation">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </footer>
   );
-};
-
-Footer.propTypes = {
-  text: PropTypes.string.isRequired,
 };
 
 export default Footer;
