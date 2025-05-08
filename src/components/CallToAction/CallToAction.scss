@@ -1,0 +1,96 @@
+@import 'styles/_colors.scss';
+@import 'styles/_mixins.scss';
+
+.callToAction {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  background-color: $primary-color-dark;
+  padding-top: 1rem;
+  padding-bottom: 2.5rem;
+  @include container;
+
+  &__titleArea {
+    grid-area: 1 / 1 / span 1 / span 8;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+
+    h1 {
+      margin: 0;
+      font-size: 4rem;
+      line-height: 4.8rem;
+      font-weight: 600;
+      color: $primary-color-light;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 2.5rem;
+      line-height: 3rem;
+      font-weight: 400;
+      color: #fff;
+    }
+  }
+
+  &__contentArea {
+    grid-area: 2 / 1 / span 1 / span 4;
+
+    p {
+      margin: 1rem 0 0;
+      font-size: 1.125em;
+      line-height: 21/16rem;
+      color: #fff;
+    }
+  }
+
+  &__imageArea {
+    position: relative;
+    grid-area: 2 / 5 / span 1 / span 4;
+    padding: 0 1rem;
+  }
+
+  &__actionsArea {
+    grid-area: 3 / 1 / span 1 / span 8;
+    margin-top: 1rem;
+  }
+
+  &__imageContainer {
+    border-radius: 1rem;
+    max-height: 15rem;
+    overflow: hidden;
+    background-color: #ccc;
+
+    img {
+      display: block;
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+.callToAction {
+  &__titleArea {
+    grid-area: 1 / 1 / span 1 / span 4;
+  }
+  &__contentArea {
+    grid-area: 2 / 1 / span 1 / span 4;
+  }
+  &__imageArea {
+    grid-area: 1 / 5 / span 3 / span 4;
+    overflow: hidden;
+  }
+  &__actionsArea {
+    grid-area: 3 / 1 / span 1 / span 4;
+  }
+
+  &__imageContainer {
+    max-height: none;
+    position: absolute;
+    width: 50%;
+    height: 0;
+    padding-bottom: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
+}

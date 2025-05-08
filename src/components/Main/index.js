@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Main.css'; // Optional: Add styles if needed
+import './Main.scss'; // Optional: Add styles if needed
 
 const Main = ({ children }) => {
   return (

@@ -1,14 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import CallToAction from 'components/CallToAction';
 
 export default function HomePage() {
   return (
     <div>
-      <h1>HomePage</h1>
+      <CallToAction />
       
-      <div>
-        <Link to="/booking">Booking</Link>
-      </div>
     </div>
   )
 }

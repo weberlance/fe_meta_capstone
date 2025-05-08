@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ReactComponent as Logo } from 'assets/images/Logo.svg';
 import { ReactComponent as Basket } from 'assets/images/Basket.svg';
-import './Header.scss'; // Optional: Add styles for the Header component
+import './Header.scss';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

@@ -1,0 +1,7 @@
+@import 'styles/_colors.scss';
+@import 'styles/_mixins.scss';
+
+.main-wrapper {
+  display: flex;
+  flex-direction: column;
+}
