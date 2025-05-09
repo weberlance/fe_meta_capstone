@@ -9,7 +9,7 @@ const schema = yup.object().shape({
   phone: yup.string().matches(/\d{8}/, 'Invalid format').required('Phone is required'),
 });
 
-export default function ReserveForm() {
+export default function ConfirmReservationForm() {
   const {
     register,
     handleSubmit,
