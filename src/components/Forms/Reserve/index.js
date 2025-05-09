@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
@@ -12,26 +13,67 @@ const schema = yup.object().shape({
 });
 
 export default function ReserveForm() {
+  const navigate = useNavigate();
   const {
     register,
+    watch,
     handleSubmit,
     formState: { errors },
   } = useForm({
+    defaultValues: {
+      time: '',
+    },
     resolver: yupResolver(schema),
   })
-  const onSubmit = (data) => console.log(data)
+
+  const [timeOptions, setTimeOptions] = React.useState([]);
+  const selectedDate = watch('date');
+
+  const onSubmit = (data) => {
+    console.log(data);
+    if (window.submitAPI(data)) {
+      navigate('/booking-confirmation');
+    } else {
+      alert('There is a server error. Please try again.');
+    };
+  };
+
+  useEffect(() => {
+    if (selectedDate) {
+      // fetchAPI is stub function from outside
+      setTimeOptions(window.fetchAPI(new Date(selectedDate)));
+    }
+  }, [selectedDate]);
 
   return (
     <div>
       <h2 className="formTitle">Reserve a Table</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="date" {...register("date")} placeholder="Select Date" />
+        <input
+          className="input"
+          type="date"
+          {...register("date")}
+          placeholder="Select Date"
+        />
         <p className="error">{errors.date?.message}</p>
 
-        <input type="time" {...register("time")} placeholder="Select Time" />
+        <select
+           className="input"
+          {...register("time", {
+            disabled: selectedDate === '',
+          })}
+        >
+          <option value="" disabled>Select Time</option>
+          {timeOptions.map(optionData => <option value={optionData} key={optionData}>{optionData}</option>)}
+        </select>
         <p className="error">{errors.time?.message}</p>
 
-        <input type="number" {...register("guests")} placeholder="No of Guests" />
+        <input
+          className="input"
+          type="number"
+          {...register("guests")}
+          placeholder="No of Guests"
+        />
         <p className="error">{errors.guests?.message}</p>
 
         <button type="submit" className="btn btn-primary">Reserve</button>

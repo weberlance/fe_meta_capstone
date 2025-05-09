@@ -34,6 +34,41 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+
+    <!--
+      script that imitates remote API functions. !!! As GitHub changed response headers we can not use this script directly
+      So instead of original script use the copy of the code:
+     -->
+    <!-- <script src="https://raw.githubusercontent.com/courseraap/capstone/main/api.js"></script> -->
+     <script>
+      var seededRandom = function (seed) {
+          var m = 2**35 - 31;
+          var a = 185852;
+          var s = seed % m;
+          return function () {
+              return (s = s * a % m) / m;
+          };
+      }
+
+      var fetchAPI = function(date) {
+          let result = [];
+          let random = seededRandom(date.getDate());
+
+          for(let i = 17; i <= 23; i++) {
+              if(random() < 0.5) {
+                  result.push(i + ':00');
+              }
+              if(random() < 0.5) {
+                  result.push(i + ':30');
+              }
+          }
+          return result;
+      };
+      var submitAPI = function(formData) {
+          return true;
+      };
+     </script>
+
     <title>React App</title>
   </head>
   <body>

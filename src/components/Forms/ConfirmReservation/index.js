@@ -23,13 +23,13 @@ export default function ConfirmReservationForm() {
     <div>
       <h2 className="formTitle">Confirm Reservation</h2>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input type="name" {...register("name")} placeholder="Enter Your First Name" />
+        <input className="input" type="name" {...register("name")} placeholder="Enter Your First Name" />
         <p className="error">{errors.name?.message}</p>
 
-        <input type="email" {...register("email")} placeholder="Enter Your Email" />
+        <input className="input" type="email" {...register("email")} placeholder="Enter Your Email" />
         <p className="error">{errors.email?.message}</p>
 
-        <input type="tel" {...register("phone")} placeholder="Enter Your Phone Number" />
+        <input className="input" type="tel" {...register("phone")} placeholder="Enter Your Phone Number" />
         <p className="error">{errors.phone?.message}</p>
 
         <button type="submit" className="btn btn-primary">Booking Confirm</button>

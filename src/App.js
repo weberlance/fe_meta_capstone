@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/Home';
 import BookingPage from './pages/Booking';
+import BookingConfirmationPage from 'pages/BookingConfirmation';
 
 import Header from './components/Header';
 import Main from './components/Main';
@@ -10,23 +11,24 @@ import './App.scss';
 
 function App() {
   return (
-    <div className="app-wrapper">
-      <Header />
-      <Main>
-        <Router
-          future={{
-            v7_startTransition: true,
-            v7_relativeSplatPath: true,
-          }}
-        >
+    <Router
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
+      <div className="app-wrapper">
+        <Header />
+        <Main>
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/booking" element={<BookingPage />} />
+            <Route path="/booking-confirmation" element={<BookingConfirmationPage />} />
           </Routes>
-        </Router>
-      </Main>
-      <Footer />
-    </div>
+        </Main>
+        <Footer />
+      </div>
+    </Router>
   );
 }
 
