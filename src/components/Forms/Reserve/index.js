@@ -16,12 +16,13 @@ export default function ReserveForm() {
     register,
     watch,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isValid },
   } = useForm({
     defaultValues: {
       time: '',
+      guests: 0,
     },
-    resolver: yupResolver(schema),
+    // resolver: yupResolver(schema),
   })
 
   const [timeOptions, setTimeOptions] = React.useState([]);
@@ -53,7 +54,7 @@ export default function ReserveForm() {
           {...register("date")}
           placeholder="Select Date"
         />
-        <p className="error">{errors.date?.message}</p>
+        <p className="error">{errors.date?.message && 'test1'}</p>
 
         <select
            className="input"
@@ -64,7 +65,7 @@ export default function ReserveForm() {
           <option value="" disabled>Select Time</option>
           {timeOptions.map(optionData => <option value={optionData} key={optionData}>{optionData}</option>)}
         </select>
-        <p className="error">{errors.time?.message}</p>
+        <p className="error">{errors.time?.message && 'test2'}</p>
 
         <input
           className="input"
@@ -72,7 +73,11 @@ export default function ReserveForm() {
           {...register("guests")}
           placeholder="No of Guests"
         />
-        <p className="error">{errors.guests?.message}</p>
+        <p className="error">{errors.guests?.message && 'test3'}</p>
+        {/* <p className="error">test</p> */}
+
+
+          {isValid && <p>VALID</p>}
 
         <button type="submit" className="btn btn-primary">Reserve</button>
       </form>
