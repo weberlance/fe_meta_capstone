@@ -5,8 +5,6 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 
 const schema = yup.object().shape({
-  // name: yup.string().required('Name is required'),
-  // email: yup.string().email('Email is invalid').required('Email is required'),
   date: yup.date().required('Date is required'),
   time: yup.string().required('Time is required'),
   guests: yup.number().positive().integer().required('Number of guests is required'),
